@@ -89,16 +89,25 @@ public:
         }
     }
 
-    void ProcessEvents()
+    int32_t ProcessEvents()
     {
-        int event_number = 0;
+        int event_count = 0; ///<
         int retval = epoll_wait(_epoll_fd, _epoll_events, AE_SETSIZE, -1);
         if (retval > 0) {
-            event_number = retval;
+            event_count = retval;
             for (int i = 0; i < event_number; i++) {
-                if ()
+                int mask = IO_NONE;
+                if (_epoll_events[i].events & EPOLLIN) { mask |= IO_READABLE; }
+                if (_epoll_events[i].events & EPOLLOUT) { mask |= IO_WRITABLE; }
+
+
+                IoEvent *io_event = &_event_loop.events[fd];
+                if (io_event->mask & mask & IO_READABLE) {
+                    io_event->rfileProc(fd, io_event->userdata);
+                }
             }
         }
+        return event_count;
     }
 
 private:
