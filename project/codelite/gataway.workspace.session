@@ -1,12 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Session Name="/home/song/workspace/gateway/project/codelite/gataway.workspace">
-  <int Value="0" Name="m_selectedTab"/>
+  <int Value="1" Name="m_selectedTab"/>
   <wxString Value="/home/song/workspace/gateway/project/codelite/gataway.workspace" Name="m_workspaceName"/>
   <TabInfoArray Name="TabInfoArray">
     <TabInfo>
-      <wxString Value="/home/song/workspace/gateway/io.h" Name="FileName"/>
+      <wxString Value="/home/song/workspace/gateway/src/main.cpp" Name="FileName"/>
+      <int Value="0" Name="FirstVisibleLine"/>
+      <int Value="0" Name="CurrentLine"/>
+      <wxArrayString Name="Bookmarks"/>
+    </TabInfo>
+    <TabInfo>
+      <wxString Value="/home/song/workspace/gateway/src/io_service.h" Name="FileName"/>
       <int Value="60" Name="FirstVisibleLine"/>
-      <int Value="60" Name="CurrentLine"/>
+      <int Value="75" Name="CurrentLine"/>
       <wxArrayString Name="Bookmarks"/>
     </TabInfo>
   </TabInfoArray>

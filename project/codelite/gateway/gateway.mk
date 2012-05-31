@@ -13,7 +13,7 @@ CurrentFileName        :=
 CurrentFilePath        :=
 CurrentFileFullPath    :=
 User                   :=song
-Date                   :=2012年05月29日
+Date                   :=2012年06月01日
 CodeLitePath           :="/home/song/.codelite"
 LinkerName             :=g++
 ArchiveTool            :=ar rcus
@@ -28,7 +28,7 @@ OutputSwitch           :=-o
 LibraryPathSwitch      :=-L
 PreprocessorSwitch     :=-D
 SourceSwitch           :=-c 
-CompilerName           :=g++
+CompilerName           :=g++ -std=c++0x
 C_CompilerName         :=gcc
 OutputFile             :=$(IntermediateDirectory)/$(ProjectName)
 Preprocessors          :=
@@ -52,7 +52,7 @@ LibPath                := $(LibraryPathSwitch).
 ## User defined environment variables
 ##
 CodeLiteDir:=/usr/share/codelite
-Objects=$(IntermediateDirectory)/main$(ObjectSuffix) 
+Objects=$(IntermediateDirectory)/src_main$(ObjectSuffix) 
 
 ##
 ## Main Build Targets 
@@ -75,13 +75,13 @@ PreBuild:
 ##
 ## Objects
 ##
-$(IntermediateDirectory)/main$(ObjectSuffix): main.cpp $(IntermediateDirectory)/main$(DependSuffix)
-	$(CompilerName) $(IncludePCH) $(SourceSwitch) "/home/song/workspace/gateway/project/codelite/gateway/main.cpp" $(CmpOptions) $(ObjectSwitch)$(IntermediateDirectory)/main$(ObjectSuffix) $(IncludePath)
-$(IntermediateDirectory)/main$(DependSuffix): main.cpp
-	@$(CompilerName) $(CmpOptions) $(IncludePCH) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/main$(ObjectSuffix) -MF$(IntermediateDirectory)/main$(DependSuffix) -MM "/home/song/workspace/gateway/project/codelite/gateway/main.cpp"
+$(IntermediateDirectory)/src_main$(ObjectSuffix): ../../../src/main.cpp $(IntermediateDirectory)/src_main$(DependSuffix)
+	$(CompilerName) $(IncludePCH) $(SourceSwitch) "/home/song/workspace/gateway/src/main.cpp" $(CmpOptions) $(ObjectSwitch)$(IntermediateDirectory)/src_main$(ObjectSuffix) $(IncludePath)
+$(IntermediateDirectory)/src_main$(DependSuffix): ../../../src/main.cpp
+	@$(CompilerName) $(CmpOptions) $(IncludePCH) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/src_main$(ObjectSuffix) -MF$(IntermediateDirectory)/src_main$(DependSuffix) -MM "/home/song/workspace/gateway/src/main.cpp"
 
-$(IntermediateDirectory)/main$(PreprocessSuffix): main.cpp
-	@$(CompilerName) $(CmpOptions) $(IncludePCH) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/main$(PreprocessSuffix) "/home/song/workspace/gateway/project/codelite/gateway/main.cpp"
+$(IntermediateDirectory)/src_main$(PreprocessSuffix): ../../../src/main.cpp
+	@$(CompilerName) $(CmpOptions) $(IncludePCH) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/src_main$(PreprocessSuffix) "/home/song/workspace/gateway/src/main.cpp"
 
 
 -include $(IntermediateDirectory)/*$(DependSuffix)
@@ -89,9 +89,9 @@ $(IntermediateDirectory)/main$(PreprocessSuffix): main.cpp
 ## Clean
 ##
 clean:
-	$(RM) $(IntermediateDirectory)/main$(ObjectSuffix)
-	$(RM) $(IntermediateDirectory)/main$(DependSuffix)
-	$(RM) $(IntermediateDirectory)/main$(PreprocessSuffix)
+	$(RM) $(IntermediateDirectory)/src_main$(ObjectSuffix)
+	$(RM) $(IntermediateDirectory)/src_main$(DependSuffix)
+	$(RM) $(IntermediateDirectory)/src_main$(PreprocessSuffix)
 	$(RM) $(OutputFile)
 	$(RM) "/home/song/workspace/gateway/project/codelite/.build-debug/gateway"
 
